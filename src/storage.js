@@ -1,20 +1,20 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const storage = {
-    saveToFile:(data)=>{
-        fs.appendFile('jokes.json', data +',', function (err) {
-            if (err) return console.log(err);
-        });
-    },
-    readFromFile:()=>{
-        const array= [];
-        fs.readFile('jokes.json', 'utf8', function (err,data) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(data)
-        });
-    }
-}
+  saveToFile: (data) => {
+    fs.appendFile("jokes.json", data, function (err) {
+      if (err) return console.log(err);
+    });
+  },
+  readFromFile: () => {
+    const data = fs.readFileSync("jokes.json", "utf8",)
+    const array = data.split("\n");
+    array.pop();
+   /* array.forEach((value, index, array) => {
+      array[index] = JSON.parse(value);
+    });*/
+    return array;
+  },
+};
 
 module.exports = storage;
