@@ -15,7 +15,7 @@ const mostPopular = (array) => {
       mostPopularJoke = prop;
     }
   }
-  return JSON.parse(mostPopularJoke).results[0];
+  return mostPopularJoke;
 };
 
 const utils = {
