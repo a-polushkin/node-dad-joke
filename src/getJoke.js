@@ -22,7 +22,6 @@ const getJoke = {
 
         // The whole response has been received. Print out the result.
         resp.on("end", () => {
-          console.log(data);
           storage.saveToFile(data);
         });
       })
@@ -47,7 +46,6 @@ const getJoke = {
         });
 
         resp.on("end", () => {
-          console.log(data);
           storage.saveToFile(data);
         });
       })
