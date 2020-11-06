@@ -9,7 +9,7 @@ const getJoke = {
       method: "GET",
       path: "/",
       headers: {
-        Accept: "application/json",
+        Accept: "text/plain",
       },
     };
     https
@@ -22,7 +22,7 @@ const getJoke = {
 
         // The whole response has been received. Print out the result.
         resp.on("end", () => {
-          console.log(JSON.parse(data).joke);
+          console.log(data);
           storage.saveToFile(data);
         });
       })
@@ -36,7 +36,7 @@ const getJoke = {
       method: "GET",
       path: `/search?limit=1&term=${param}`,
       headers: {
-        Accept: "application/json",
+        Accept: "text/plain",
       },
     };
     https
@@ -47,7 +47,7 @@ const getJoke = {
         });
 
         resp.on("end", () => {
-          console.log(JSON.parse(data).results[0].joke);
+          console.log(data);
           storage.saveToFile(data);
         });
       })
@@ -57,7 +57,7 @@ const getJoke = {
   },
   leaderboard: () => {
     const array = storage.readFromFile();
-    return utils.mostPopular(array).joke;
+    return utils.mostPopular(array);
   },
 };
 module.exports = getJoke;
