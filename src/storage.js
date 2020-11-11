@@ -2,7 +2,6 @@ const fs = require("fs");
 
 const fileStorage = {
   save: (data) => {
-    console.log('save');
     fs.appendFile("jokes.txt", data + ";\n", function (err) {
       if (err) return console.log(err);
     });

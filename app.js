@@ -11,13 +11,13 @@ rl.question(
   (command) => {
     switch (command) {
       case "-r":
-        console.log(`you entered ${command}`);
+        console.log("Random joke:");
         jokeApi.random();
         rl.close();
         break;
       case "-s":
-        console.log(`you entered ${command}`);
         rl.question("Enter the word for searching:\n",(word)=>{
+          console.log(`Search result for ${word}:`);
           jokeApi.search(word);
           rl.close();
         })
@@ -27,15 +27,13 @@ rl.question(
         rl.close();
         break;
       default:
+        console.log("Most popular joke:");
         console.log("You entered the wrong command");
         rl.close();
     }
   }
 );
 
-rl.on("close", function () {
-  process.exit(0);
-});
 
 /*const myArgs = process.argv.slice(2);
 if (myArgs.length === 0) {

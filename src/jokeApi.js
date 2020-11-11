@@ -3,18 +3,15 @@ const fileStorage = require("./storage");
 const utils = require("./utils");
 
 const getJoke = (options) => {
-  console.log('getHoke');
   https
     .get(options, (resp) => {
       let data = "";
       resp.on("data", (chunk) => {
         data += chunk;
-        console.log(1);
       });
-      console.log(data)
       resp.on("end", () => {
-        console.log(data);
         fileStorage.save(data);
+        console.log(data);
       });
     })
     .on("error", (err) => {
@@ -32,7 +29,6 @@ const jokeApi = {
         Accept: "text/plain",
       },
     };
-    console.log('random');
     getJoke(options);
   },
   search: (param) => {
