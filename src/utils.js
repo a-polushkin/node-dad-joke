@@ -1,3 +1,5 @@
+// can use lodash
+
 const countDuplicate = (array) => {
   let count = {};
   array.forEach(function (i) {
@@ -19,6 +21,6 @@ const mostPopular = (array) => {
 };
 
 const utils = {
-  mostPopular: (array) => mostPopular(array),
+  mostPopular,
 };
 module.exports = utils;
